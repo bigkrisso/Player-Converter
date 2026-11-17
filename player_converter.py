@@ -14,9 +14,12 @@ Anything that doesn't match is fixed with the lightest change possible:
   * HEVC, 10-bit, MPEG-4 Part 2, etc.        -> re-encoded to H.264
 
 Usage:
-  player_converter.py                 start the GUI
-  player_converter.py --cli DEST FILE...  convert from the command line (no GUI)
+  player-converter [FILE...]           start the GUI (optionally with movies queued)
+  player-converter --cli DEST FILE...  convert from the command line (no GUI)
+  player-converter --version           print the version
 """
+
+__version__ = "1.0.0"
 
 import json
 import os
@@ -717,8 +720,13 @@ def cli_main(args):
     return rc
 
 
+# When run as a script, handle the GTK-free modes before importing GTK, so the
+# command line works on machines without GTK 4 / libadwaita installed.
 if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "--cli":
     sys.exit(cli_main(sys.argv[2:]))
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "--version":
+    print(f"player-converter {__version__}")
+    sys.exit(0)
 
 
 # --------------------------------------------------------------------------
@@ -729,7 +737,7 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk  # noqa: E402
 
-APP_ID = "com.example.PlayerConverter"
+APP_ID = "io.github.bigkrisso.PlayerConverter"
 
 
 class FileItem:
@@ -768,6 +776,7 @@ class MainWindow(Adw.ApplicationWindow):
     def __init__(self, app):
         super().__init__(application=app, title="Player Converter")
         self.set_default_size(960, 860)
+        self.set_icon_name(APP_ID)
         self.cfg = load_config()
         self.items = []
         self.pool = ThreadPoolExecutor(max_workers=4)
@@ -1454,6 +1463,19 @@ def cleanup_temp():
         pass
 
 
-if __name__ == "__main__":
+def main(argv=None):
+    """Entry point for the installed `player-converter` command."""
+    argv = list(sys.argv if argv is None else argv)
+    if len(argv) > 1 and argv[1] == "--cli":
+        return cli_main(argv[2:])
+    if len(argv) > 1 and argv[1] == "--version":
+        print(f"player-converter {__version__}")
+        return 0
     cleanup_temp()
-    sys.exit(App().run(sys.argv))
+    GLib.set_prgname(APP_ID)
+    GLib.set_application_name("Player Converter")
+    return App().run(argv)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

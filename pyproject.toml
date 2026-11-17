@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "player-converter"
+dynamic = ["version"]
+description = "Convert movies into a format an external media player can play, and copy them onto a removable drive"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "bigkrisso" }]
+keywords = ["ffmpeg", "h264", "video", "converter", "gtk", "libadwaita"]
+classifiers = [
+    "Environment :: X11 Applications :: GTK",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video :: Conversion",
+]
+# PyGObject (GTK 4 + libadwaita bindings) is deliberately NOT listed here:
+# building it with pip needs compiler toolchains and dev headers. Use the
+# distro packages instead (see README) and, with pipx, --system-site-packages.
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/bigkrisso/Player-Converter"
+Issues = "https://github.com/bigkrisso/Player-Converter/issues"
+
+[project.scripts]
+player-converter = "player_converter:main"
+
+[tool.setuptools]
+py-modules = ["player_converter"]
+
+[tool.setuptools.dynamic]
+version = { attr = "player_converter.__version__" }

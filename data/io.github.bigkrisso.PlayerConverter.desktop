@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Player Converter
+GenericName=Movie Converter
+Comment=Convert movies for the external media player and copy them to a USB drive
+Exec=player-converter %F
+Icon=io.github.bigkrisso.PlayerConverter
+Terminal=false
+Categories=AudioVideo;Video;GTK;GNOME;
+Keywords=movie;video;convert;ffmpeg;h264;usb;player;
+MimeType=video/x-matroska;video/mp4;video/x-m4v;video/x-msvideo;video/quicktime;video/x-ms-wmv;video/mpeg;video/mp2t;video/webm;video/x-flv;video/ogg;video/3gpp;
+StartupNotify=true
+DBusActivatable=false

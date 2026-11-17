@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3584e4"/>
+      <stop offset="1" stop-color="#1c71d8"/>
+    </linearGradient>
+    <linearGradient id="drive" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f5f4"/>
+      <stop offset="1" stop-color="#deddda"/>
+    </linearGradient>
+  </defs>
+  <!-- film frame -->
+  <rect x="8" y="14" width="84" height="64" rx="10" fill="url(#body)"/>
+  <g fill="#ffffff" fill-opacity="0.35">
+    <rect x="14" y="20" width="8" height="6" rx="1.5"/>
+    <rect x="14" y="34" width="8" height="6" rx="1.5"/>
+    <rect x="14" y="48" width="8" height="6" rx="1.5"/>
+    <rect x="14" y="62" width="8" height="6" rx="1.5"/>
+    <rect x="78" y="20" width="8" height="6" rx="1.5"/>
+    <rect x="78" y="34" width="8" height="6" rx="1.5"/>
+    <rect x="78" y="48" width="8" height="6" rx="1.5"/>
+    <rect x="78" y="62" width="8" height="6" rx="1.5"/>
+  </g>
+  <path d="M42 32 L62 46 L42 60 Z" fill="#ffffff"/>
+  <!-- USB drive -->
+  <rect x="76" y="70" width="20" height="12" rx="2" fill="#9a9996"/>
+  <rect x="80" y="73" width="4" height="4" fill="#5e5c64"/>
+  <rect x="88" y="73" width="4" height="4" fill="#5e5c64"/>
+  <rect x="68" y="80" width="36" height="40" rx="7" fill="url(#drive)" stroke="#9a9996" stroke-width="2"/>
+  <!-- arrow from film to drive -->
+  <path d="M40 84 L40 100 L58 100" fill="none" stroke="#2ec27e" stroke-width="7"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54 92 L64 100 L54 108 Z" fill="#2ec27e"/>
+</svg>

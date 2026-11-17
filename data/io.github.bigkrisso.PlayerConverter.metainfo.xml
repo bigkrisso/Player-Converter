@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.bigkrisso.PlayerConverter</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Player Converter</name>
+  <summary>Convert movies for an external media player and copy them to a drive</summary>
+  <description>
+    <p>
+      Player Converter makes movies playable on a media player that only understands
+      8-bit H.264 (level 4.1, up to 1080p30) with AAC audio, then copies them onto a
+      removable drive.
+    </p>
+    <p>It always makes the lightest change that works:</p>
+    <ul>
+      <li>Files that already play are copied as they are</li>
+      <li>H.264 that is only tagged above level 4.1 is relabelled without re-encoding</li>
+      <li>Dolby, DTS and other audio is converted to AAC</li>
+      <li>HEVC, 10-bit and other unsupported video is re-encoded to H.264</li>
+    </ul>
+    <p>
+      It shows how many movies will fit before you start, respects the FAT32 4 GB file
+      limit, can use NVIDIA, Intel or VA-API hardware encoders, and ejects the drive when done.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.github.bigkrisso.PlayerConverter.desktop</launchable>
+  <url type="homepage">https://github.com/bigkrisso/Player-Converter</url>
+  <url type="bugtracker">https://github.com/bigkrisso/Player-Converter/issues</url>
+  <developer id="io.github.bigkrisso">
+    <name>bigkrisso</name>
+  </developer>
+  <content_rating type="oars-1.1"/>
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+  <releases>
+    <release version="1.0.0" date="2026-11-17"/>
+  </releases>
+</component>
